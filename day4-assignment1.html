@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day4-assignment1</title>
+</head>
+<body>
+    <h1>Electricity bill</h1>
+    <form action="" method="POST" role="form">
+        <label for="">Total Unit / Kwh</label>
+		<input type="text" class="form-control" name="unit" placeholder="Input total Unit">
+        
+                    <button onclick="calculatebill()" type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+    <script>
+        function calculatebill(units){
+            num=document.getElementBYId("Input").value;
+            if(num<=100)
+            {
+                return 1 * units;
+            }
+            else if(num<=200)
+            {
+                
+                res= 2 * input;
+            }
+            return 0;
+        }
+        var units= 250;
+        document.getElementById(calculatebill(units));
+        console.log('Result of addition : ',res);
+
+
+    </script>
+</body>
+</html>

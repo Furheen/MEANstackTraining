@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndToEnd CRUD</title>
+
+<body onload="getUsers()">
+    <div id="container">
+        <div>
+            <h1 style="text-align: center;">End to End CRUD</h1>
+        </div>
+        <div id="addUsers">
+
+            <h1>Add User</h1>
+ <input type="text" name="id" id="id" placeholder=" Enter Id" disabled><br>
+ <input type="text" name="name" id="name" placeholder="Enter name"><br>
+ <input type="text" name="email" id="email" placeholder="Enter email"><br>
+ <input type="text" name="city" id="city" placeholder="Enter city"><br>
+ <input type="text" name="phone" id="phone" placeholder="Enter phone no"><br>
+ <input type="text" name="company" id="company" placeholder="Enter company"><br><br>
+ <button id="add" onclick="addUsers()">Add Users</button><br><br><br>
+ 
+ <div>
+ <table id="result"></table>
+ </div>
+<script>
+    /** {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    }
+  }**/
+  var todos=[];
+ function getUsers()
+ {
+ 
+ fetch('https://jsonplaceholder.typicode.com/users')
+ .then(response=>response.json())
+ //.then(json=>console.log(json))
+ .then(json=>showUsers(json)) 
+ }
+ function showUsers(data){
+ todos=data; 
+ console.log("data",data)
+ // console.log("users",users)
+ var dispdata=`<tr><th>Id</th><th>NAME</th><th>EMAIL</th><th>CITY</th><th>PHONE</th><th>COMPANY</th></tr>`;
+ for (let i=0;i<todos.length;i++){
+ dispdata= dispdata +`<tr><td>${todos[i].id}</td><td>${todos[i].name}</td><td>${todos[i].email}</td><td>${todos[i].address.city}</td><td>${todos[i].phone}</td><td>${todos[i].company.name}</td><td><button id=${todos[i].id} onclick="updateTodos(${todos[i].id})">Update</button><button id=${todos[i].id} onclick="deleteTodos(${todos[i].id})">Delete</button></td></tr>`;
+ 
+ }
+ document.getElementById("result").innerHTML=dispdata;
+ }
+
+ function addUsers(){
+            id=user.length+1;
+            console.log('id ',id);           
+            name=document.getElementById('name').value;
+            email=document.getElementById('email').value;
+            city=document.getElementById('city').value;
+            phone=document.getElementById('phone').value;
+            company=document.getElementById('company').value;
+
+            //newtodo = {'id':id,'title':title,'userId':userId,'status':status};
+            fetch('https://jsonplaceholder.typicode.com/users',            
+            {
+                headers: { "Content-Type": "application/json; charset=utf-8" },
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id,
+                    name: name,
+                    email:email,
+                    city: city,
+                    phone: phone,
+                    company: company
+            
+                })
+            }            
+            )
+            .then(response=>response.json())
+            //.then(json=>console.log('add ',json))
+            .then(json=>addData(json))
+        
+        }
+
+        function addData(user){
+            user.unshift(user);
+            showUsers(user);        
+        }
+ 
+ 
+ </script>
+
+
+
+
+
+ 
+</body>
+</html>
+  

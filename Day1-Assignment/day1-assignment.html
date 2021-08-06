@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day1-Assignment</title>
+</head>
+<body style="background-color: rgb(206, 119, 206)">
+    <h1 style="text-align:center">Corona Patient Management</h1>
+    
+    <div class="center">
+        <style>
+          .center {
+        margin: auto;
+        width: 40%;
+        height: 100%;
+      
+      }
+        </style>
+    <form action="nextpage.html" method="get">
+        <Label>Name of the patient:</Label>
+        <input type="text" id="name" name="name" placeholder="Enter name"><br><br>
+        <label>Gender:&nbsp &nbsp</label>
+        <input type="radio" name="gender" value="m">Male
+        <input type="radio" name="gender" value="f">Female
+        <input type="radio" name="gender" value="o">Others<br><br>
+
+        <label>Location:&nbsp &nbsp </label>
+        <select id="location">
+          <option value="chn">Chennai</option>
+          <option value="bng">Bangalore</option>
+          <option value="hyd">Hyderabad</option>
+        </select><br><br>
+
+        <Label>spo2level</Label>
+        <input type="range" id="range" name="range" min="1" max="100"><br><br>
+        
+        <Label>Aadhar no.</Label>
+        <input type="text" id="aadhar" name="aadhar"><br><br>
+        
+        <label for="phone_no">Phone No.:</label>
+        <input type="tel" id="phone_no" name="phone_no" placeholder="xxxxx xxxxx" pattern="[0-9]{5} [0-9]{5}" required><br><br>
+  
+        <label>Attendee name</label>
+        <input type="text" id="attendee" name="attendee"><br><br>
+
+        <label>Type of Hospital: </label>
+        <select id="hospital">
+          <option value="govn">Government</option>
+          <option value="private">Private</option>
+        </select><br><br>
+        
+        <input type="submit" value="Submit">
+        <!--<button></button>-->
+    </form>
+</div>
+</body>
+</html>

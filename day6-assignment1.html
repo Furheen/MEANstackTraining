@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Open weather API</h1>
+
+    <script>
+        weatherdetails=[];
+
+        function showDetails(){
+            var location =document.getElementById("locationval").value;
+            //console.log('location::',location);
+             var url="https://api.openweathermap.org/data/2.5/"
+                        +"weather?q="+location+"&appid=4d0b966e05854cfbcf2dc7512e92063d";
+            //console.log('url::',url);
+            fetch(url)
+                .then(response=>response.json())
+                .then(json=>displayWeather(json))
+            
+        
+        }
+
+        function displayWeather(jsondata){
+            weatherDetails=jsondata;
+            console.log('displayData::',weatherDetails);
+            //var data="<h1 class='text-center alert alert-success'>Weather Information</h1>";
+
+            //data= data + 
+            //<label> Coord Lon:</label>$(weatherDetails.coord.long) + "<br>";
+
+            //<label> Coord Lat:</label>$(weatherDetails.coord.lat)  + "<br>";
+
+            //<label> Temp:</label>$(weatherDetails.main.temp) + "<br>";
+
+            //<label> Pressure :</label>$(weatherDetails.main.pressure) + "<br>";
+
+            //<label> Humidity :</label>$(weatherDetails.main.humidity) + "<br>";
+
+           // <label> wind :</label>$(weatherDetails.wind.speed) + "<br>";
+
+
+           var data="";
+           data="<br><b>City</b> : "  + weatherDetails.name + "<br>";
+            
+            data = data+ "<br><b>Coord</b> : " + "lon -" + weatherDetails.coord.lon +"<br>";
+
+            data = data+ "<br><b>Temp</b> : " + weatherDetails.main.temp +"<br>";
+
+            data = data+ "<br><b>Pressure</b> : "  + weatherDetails.main.pressure +"<br>";
+
+
+
+
+        }
+    </script>
+</body>
+</html>
